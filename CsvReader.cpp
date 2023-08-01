@@ -20,23 +20,18 @@ bool ReadCsv::read() {
         return false;
     }
 
-    // Temporary string to hold each line of the CSV file
     std::string line;
 
     while (std::getline(infile, line)) {
-        // Create a string stream to parse the line
         std::stringstream ss(line);
 
-        // Vector to store the fields of the current row
         std::vector<std::string> row;
 
-        // Read each field from the line and store it in the row vector
         std::string field;
         while (std::getline(ss, field, ',')) {
             row.push_back(field);
         }
 
-        // Add the row to the data vector
         data.push_back(row);
     }
 
