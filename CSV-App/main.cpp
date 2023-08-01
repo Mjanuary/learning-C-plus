@@ -7,139 +7,20 @@
 
 #include <iostream>
 #include <string>
-
-#include <fstream>
-#include <sstream>
 #include <vector>
-using namespace std;
+#include "CsvReader.hpp"
 
-class ReadCsv {
-    private:
-        string filePath;
-        std::vector<std::vector<std::string>> data;
-    
-    public:
-        void path(string path) {
-            filePath = path;
-        }
-    
-        bool read() {
-            std::ifstream infile(filePath);
-            
-            if (!infile) {
-                std::cerr << "Error opening file: " << filePath << std::endl;
-                return false;
-            }
-            
-            // Temporary string to hold each line of the CSV file
-            std::string line;
 
-            while (std::getline(infile, line)) {
-                // Create a string stream to parse the line
-                std::stringstream ss(line);
 
-                // Vector to store the fields of the current row
-                std::vector<std::string> row;
-
-                // Read each field from the line and store it in the row vector
-                std::string field;
-                while (std::getline(ss, field, ',')) {
-                    row.push_back(field);
-                }
-
-                // Add the row to the data vector
-                data.push_back(row);
-            }
-            
-            infile.close();
-            return true;
-        }
-    
-        void display() const {
-            cout << "-------------- DATA DISPLAY --------------" << endl;
-            for (const auto& row : data) {
-                for (const auto& field : row) {
-                    std::cout << field << ", ";
-                }
-                std::cout << std::endl;
-            }
-        }
-    
-        void display(int col) const {
-            cout << "-------------- DISPLAY COL ("<< col <<") --------------" << endl;
-            if (!isColumnValid(col)) {
-                cout << "⚠️ Invalid column" << endl;
-            } else {
-                for (const auto& row : data) {
-                    cout << row[col] << endl;
-                }
-            }
-
-        }
-   
-    private:
-        bool isColumnValid(int col) const {
-            if (data.size() <= 0) {
-                return false;
-            }
-            
-            if (data[0].size() <= (col-1)) {
-                return false;
-            }
-            
-            return true;
-        }
-        
-        double convert(const std::string& str) {
-            std::istringstream iss(str);
-            double value = 0.0;
-            if (!(iss >> value)) {
-                value = 0.0;
-            }
-            return value;
-        }
-    
-    public:
-    std::vector<double> getColumnNumeric(int col) {
-        std::vector<double> result;
-        result.push_back(0);
-        if (!isColumnValid(col)) {
-            return result;
-        }
-        
-        for (const auto& row : data) {
-            result.push_back(convert(row[col]));
-        }
-        return result;
-    }
-    
-    std::vector<string> getColumnString(int col) {
-        std::vector<string> result;
-        for (const auto& row : data) {
-            result.push_back(row[col]);
-        }
-        return result;
-    }
-
-};
-
-double convert(const std::string& str) {
-    std::istringstream iss(str);
-    double value = 0.0;
-    if (!(iss >> value)) {
-        value = 0.0; // Set value to 0 if the conversion fails
-    }
-    return value;
-}
 
 void menu() {
-    cout << endl << "************************************" << endl;
-    cout << "* Commands: ⌨️                     *" << endl;
-    cout << "* 'exit'    👉 Close app           *" << endl;
-    cout << "* 'list'    👉 Display contents    *" << endl;
-    cout << "* 'list-c' 👉 Display a column    *" << endl;
-    cout << "* 'SUM'     👉 Display a column    *" << endl;
-    cout << "************************************" << endl << endl;
+    std::cout << std::endl << "************************************" << std::endl;
+    std::cout << "* Commands: ⌨️                     *" << std::endl;
+    std::cout << "* 'exit'    👉 Close app           *" << std::endl;
+    std::cout << "* 'list'    👉 Display contents    *" << std::endl;
+    std::cout << "* 'list-c' 👉 Display a column     *" << std::endl;
+    std::cout << "* 'SUM'     👉 Display a column    *" << std::endl;
+    std::cout << "************************************" << std::endl << std::endl;
 
 }
 
@@ -155,40 +36,40 @@ double SUM(const std::vector<double>& numbers) {
 
 int main(int argc, const char * argv[]) {
     ReadCsv csv;
-    string filename;
-    cout << "Enter the file path 📂: "; //   /Users/muhawenimanajanvier/dev/c++/helloWorld/CHelloWord/CHelloWord/data.csv
-    cin >> filename;
+    std::string filename;
+    std::cout << "Enter the file path 📂: "; //   /Users/muhawenimanajanvier/dev/c++/helloWorld/CHelloWord/CHelloWord/data.csv
+    std::cin >> filename;
     csv.path(filename);
 
 
 
 
     if (csv.read()) {
-        cout << endl << "✅ File loaded successfully!" << endl;
+        std::cout << std::endl << "✅ File loaded successfully!" << std::endl;
     } else {
-        cout << endl << "⚠️ Failed to read the file, please make sure the path and the file is a csv" << endl;
+        std::cout << std::endl << "⚠️ Failed to read the file, please make sure the path and the file is a csv" << std::endl;
         return 0;
     }
 
-    string command;
+    std::string command;
 
     menu();
     do {
-        cin >> command;
+        std::cin >> command;
         if (command == "list") csv.display();
         if (command == "list-c") {
             int pos;
-            cout << "Enter the column position: ";
-            cin >> pos;
+            std::cout << "Enter the column position: ";
+            std::cin >> pos;
             csv.display(pos);
         }
         
         if (command == "SUM") {
             int pos;
-            cout << "Enter the column position: ";
-            cin >> pos;
+            std::cout << "Enter the column position: ";
+            std::cin >> pos;
             std::vector<double> result = csv.getColumnNumeric(pos);
-            cout << endl << "Sum is: " << SUM(result) << endl;
+            std::cout << std::endl << "Sum is: " << SUM(result) << std::endl;
         }
         
     } while (command != "exit");

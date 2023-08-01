@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		776DD4382A77B10900FA2012 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 776DD4372A77B10900FA2012 /* main.cpp */; };
+		776DD4442A79677C00FA2012 /* CsvReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 776DD4422A79677C00FA2012 /* CsvReader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		776DD4342A77B10900FA2012 /* CSV-App */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CSV-App"; sourceTree = BUILT_PRODUCTS_DIR; };
 		776DD4372A77B10900FA2012 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		776DD4422A79677C00FA2012 /* CsvReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CsvReader.cpp; sourceTree = "<group>"; };
+		776DD4432A79677C00FA2012 /* CsvReader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CsvReader.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +44,8 @@
 		776DD42B2A77B10900FA2012 = {
 			isa = PBXGroup;
 			children = (
+				776DD4422A79677C00FA2012 /* CsvReader.cpp */,
+				776DD4432A79677C00FA2012 /* CsvReader.hpp */,
 				776DD4362A77B10900FA2012 /* CSV-App */,
 				776DD4352A77B10900FA2012 /* Products */,
 			);
@@ -120,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				776DD4382A77B10900FA2012 /* main.cpp in Sources */,
+				776DD4442A79677C00FA2012 /* CsvReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
