@@ -1,0 +1,40 @@
+# Xcode
+.DS_Store
+build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.xcworkspace
+!default.xcworkspace
+xcuserdata/
+
+# C++ Compiled Output
+*.o
+*.a
+*.dylib
+*.exe
+
+# C++ Build Output
+Debug/
+Release/
+xcuserdata/
+
+# Other
+.idea/
+.vscode/
+*.swp
+
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+.idea
+.vscode
+cmake-build-debug
+CSV-App.xcodeproj
+compilled

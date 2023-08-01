@@ -9,5 +9,13 @@
 #define app_hpp
 
 #include <stdio.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#include "CsvReader.hpp"
+#include "sum.hpp"
+
+void menu();
+int app();
 
 #endif /* app_hpp */
