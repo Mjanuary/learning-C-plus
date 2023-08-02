@@ -26,7 +26,6 @@ bool ReadCsv::read() {
         std::stringstream ss(line);
 
         std::vector<std::string> row;
-
         std::string field;
         while (std::getline(ss, field, ',')) {
             row.push_back(field);
